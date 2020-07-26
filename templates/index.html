@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+       body {
+  width: 100%;
+  border: 25px solid gray;
+  
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="signupbox" style=" margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title" style="margin-left: 20%;"><h2>Predictive Analysis</h2></div>
+                </div>
+                <div class="panel-body">
+                        <form class="form-horizontal" action="{{ url_for('predict')}}" method="post">
+
+                            <div id="div_id_username" class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"><b>Year</b><span
+                                        class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="year"
+                                        name="Year"  style="margin-bottom: 10px"
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div id="div_id_email" class="form-group required">
+                                <label for="id_email" class="control-label col-md-12  requiredField"><b>What is the
+                                    Showroom
+                                    Price?(In lakhs)</b><span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md emailinput form-control" id="present_price" name="Present_Price"
+                                        style="margin-bottom: 10px"
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div id="div_id_password1" class="form-group required">
+                                <label for="id_password1" class="control-label col-md-12  requiredField"><b>How Many
+                                    Kilometers Drived?</b><span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="kms_driven"
+                                        name="Kms_Driven"  style="margin-bottom: 10px"
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div id="div_id_password1" class="form-group required">
+                                <label for="id_password1" class="control-label col-md-12  requiredField"><b>How much owners previously had the car(0 or 1 or 3) ?</b><span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="owner"
+                                        name="Owner"  style="margin-bottom: 10px"
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div id="fuel_type" class="form-group required">
+                                <label for="fuel_type" class="control-label col-md-12  requiredField"><b>What Is the Fuel
+                                    type?</b> <span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <select id="inputState" name="Fuel_Type_Petrol" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option value="Petrol">Petrol</option>
+                                        <option value="Diesel">Diesel</option>
+                                        <option value="Diesel">CNG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="dealer" class="form-group required">
+                                <label for="dealer" class="control-label col-md-12  requiredField"><b>Are you A Dealer
+                                    or Individual</b><span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 " style="margin-bottom: 10px">
+                                    <select id="inputState" name="Seller_Type_Individual" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option value="Dealer">Dealer</option>
+                                        <option value="Individual">Individual</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="transmission_mannual" class="form-group required">
+                                <label for="transmission_mannual" class="control-label col-md-4  requiredField"><b>Transmission
+                                    type</b><span class="asteriskField" style="color: red;">*</span> </label>
+                                <div class="controls col-md-8 ">
+                                    <select id="inputState" name="Transmission_Mannual" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option value="Mannual">Manual Car</option>
+                                        <option value="Automatic">Automatic Car</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-12">
+                                    <input type="submit" name="Calculate the Selling Price"
+                                        value="Calculate the Selling Price" class="btn btn-primary btn btn-info"
+                                        id="sub" />
+                                </div>
+                            </div>
+                            <h3 style="color:green">{{ prediction_text }}<h3></h3>
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
